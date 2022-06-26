@@ -26,60 +26,63 @@ const App = () => {
             <main className='py-3'>
                 <Container>
                     <Routes>
-                        <Route path='/order/:id' component={OrderScreen} />
-                        <Route path='/shipping' component={ShippingScreen} />
-                        <Route path='/payment' component={PaymentScreen} />
+                        <Route path='/order/:id' element={<OrderScreen />} />
+                        <Route path='/shipping' element={<ShippingScreen />} />
+                        <Route path='/payment' element={<PaymentScreen />} />
                         <Route
                             path='/placeorder'
-                            component={PlaceOrderScreen}
+                            element={<PlaceOrderScreen />}
                         />
-                        <Route path='/login' component={LoginScreen} />
-                        <Route path='/register' component={RegisterScreen} />
-                        <Route path='/profile' component={ProfileScreen} />
-                        <Route path='/product/:id' component={ProductScreen} />
-                        <Route path='/cart/:id?' component={CartScreen} />
+                        <Route path='/login' element={<LoginScreen />} />
+                        <Route path='/register' element={<RegisterScreen />} />
+                        <Route path='/profile' element={<ProfileScreen />} />
+                        <Route
+                            path='/product/:id'
+                            element={<ProductScreen />}
+                        />
+                        <Route path='/cart/:id?' element={<CartScreen />} />
                         <Route
                             path='/admin/userList'
-                            component={UserListScreen}
+                            element={<UserListScreen />}
                         />
                         <Route
                             path='/admin/user/:id/edit'
-                            component={UserEditScreen}
+                            element={<UserEditScreen />}
                         />
                         <Route
                             path='/admin/productlist'
-                            component={ProductListScreen}
+                            element={<ProductListScreen />}
                             exact
                         />
                         <Route
                             path='/admin/productlist/:pageNumber'
-                            component={ProductListScreen}
+                            element={<ProductListScreen />}
                             exact
                         />
                         <Route
                             path='/admin/product/:id/edit'
-                            component={ProductEditScreen}
+                            element={<ProductEditScreen />}
                         />
                         <Route
                             path='/admin/orderlist'
-                            component={OrderListScreen}
+                            element={<OrderListScreen />}
                         />
                         <Route
-                            path='/search:keyword'
-                            component={HomeScreen}
+                            path='/search/:keyword'
+                            element={<HomeScreen />}
                             exact
                         />
                         <Route
                             path='/page/:pageNumber'
-                            component={HomeScreen}
+                            element={<HomeScreen />}
                             exact
                         />
                         <Route
                             path='/search/:keyword/page/:pageNumber'
-                            component={HomeScreen}
+                            element={<HomeScreen />}
                             exact
                         />
-                        <Route path='/' component={HomeScreen} exact />
+                        <Route path='/' element={<HomeScreen />} exact />
                     </Routes>
                 </Container>
             </main>

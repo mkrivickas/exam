@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import {LinkedList} from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+// import { LinkedList } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
@@ -11,9 +12,10 @@ import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
 
 const HomeScreen = ({ match }) => {
-    const keyword = match.params.keyword
+    console.log(useParams())
+    const keyword = useParams('keyword')
 
-    const pageNumber = match.params.pageNumber || 1
+    const pageNumber = 1
 
     const dispatch = useDispatch()
 
@@ -27,7 +29,13 @@ const HomeScreen = ({ match }) => {
     return (
         <>
             <Meta />
-            {!keyword ? <ProductCarousel /> : <Link to='/' className='btn btn-light'}>Go Back</Link>}
+            {!keyword ? (
+                <ProductCarousel />
+            ) : (
+                <Link to='/' className='btn btn-light'>
+                    Go Back
+                </Link>
+            )}
             <h1>Latest Products</h1>
             {loading ? (
                 <Loader />
@@ -49,6 +57,7 @@ const HomeScreen = ({ match }) => {
                     />
                 </>
             )}
+        </>
     )
 }
 export default HomeScreen

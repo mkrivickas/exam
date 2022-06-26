@@ -14,12 +14,14 @@ const storage = multer.diskStorage({
     },
 })
 
-function checkFileType(file, cb){
+function checkFileType(file, cb) {
     const filetypes = /jpg|jpeg|png/
-    const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+    const extname = filetypes.test(
+        path.extname(file.originalname).toLowerCase()
+    )
     const mimetype = filetypes.test(file.mimetype)
-    
-    if(extname && mimetype){
+
+    if (extname && mimetype) {
         return cb(null, true)
     } else {
         cb('Images only!')
@@ -28,11 +30,11 @@ function checkFileType(file, cb){
 
 const upload = multer({
     storage,
-    fileFilter: function(req, file, cb)
-    checkFileType(file, cb)
+    // fileFilter: function(req, file, cb)
+    // checkFileType(file, cb)
 })
 
-router.post('/', upload.single('image'), (req, res) =>{
+router.post('/', upload.single('image'), (req, res) => {
     res.send(`/${req.file.path}`)
 })
 

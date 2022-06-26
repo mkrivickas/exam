@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
@@ -18,18 +18,25 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar bg='dark' variant='dark' expand='lg' CollapseOnSelect>
+            <Navbar
+                bg='dark'
+                variant='dark'
+                expand='lg'
+                collapseonselect='true'
+            >
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand>ProShop</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
-                        <Route
-                            render={({ history }) => (
-                                <SearchBox history={history} />
-                            )}
-                        />
+                        <Routes>
+                            <Route
+                                render={({ history }) => (
+                                    <SearchBox history={history} />
+                                )}
+                            />
+                        </Routes>
                         <Nav className='ms-auto'>
                             <LinkContainer to='/cart'>
                                 <Nav.Link>
